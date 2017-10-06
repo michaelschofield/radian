@@ -117,9 +117,7 @@ add_action( 'widgets_init', 'radian_widgets_init' );
  * Enqueue scripts and styles.
  */
 function radian_scripts() {
-	wp_enqueue_style( 'radian-style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'radian-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_style( 'radian-style', get_template_directory_uri() . '/public/radian.css' );
 
 	wp_enqueue_script( 'radian-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -132,27 +130,27 @@ add_action( 'wp_enqueue_scripts', 'radian_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/resources/templates/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/resources/templates/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/resources/templates/template-functions.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/resources/templates/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+	require get_template_directory() . '/resources/templates/jetpack.php';
 }
 
