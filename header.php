@@ -33,7 +33,7 @@
         <?php esc_html_e( 'Skip to content', 'radian' ); ?>
     </a>
 
-	<header class="align-items-start d-flex">
+	<header class="align-items-start justify-content-between m-0 row">
 
         <!--
         # We are hiding our site's title and its description, but it's important for
@@ -42,9 +42,7 @@
         <?php
         if ( is_front_page() && is_home() ) : ?>
             <h1 class="sr-only"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-        <?php else : ?>
-            <p class="sr-only"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-            <?php
+        <?php
         endif;
 
         $description = get_bloginfo( 'description', 'display' );
@@ -57,7 +55,7 @@
         # Our logo. These are two separate `<svg>` blocks so that we can style them a little more easily.
         # For instance, whether we want to reorganize it based on screen size.
         -->
-        <a class="align-items-center col-2 d-flex radian__logo pl-0" href="<?php echo esc_url( home_url('/') ); ?>">
+        <a class="align-items-center col-6 d-flex radian__logo pl-0" href="<?php echo esc_url( home_url('/') ); ?>">
 
             <span class="sr-only">Home</span>
 
@@ -88,15 +86,33 @@
 
         </a>
 
-		<nav class="col d-flex justify-content-end" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'radian' ); ?></button>
-			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
+        <div class="col-6 d-flex justify-content-end d-md-none">
+
+            <button class="btn btn-primary" aria-controls="primary-menu" aria-expanded="false">
+
+                <?php esc_html_e( 'Menu', 'radian' ); ?>
+
+            </button>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <nav class="col d-flex flex-column justify-content-end" role="navigation">
+
+            <?php
+            /**
+             * @see https://developer.wordpress.org/reference/functions/wp_nav_menu/
+             */
+            wp_nav_menu( array(
+                'menu_class' => '',
+                'menu_id' => 'primary-menu',
+                'theme_location' => 'menu-1',
+            ) );
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+
+		</nav>
+
+	</header>
 
 	<div id="content" class="site-content">
