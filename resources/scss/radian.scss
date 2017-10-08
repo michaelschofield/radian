@@ -1,14 +1,13 @@
 /**
  * # We are using Bootstrap 4 (https://getbootstrap.com) as our base styles. With that exception,
  * # any custom styles we write will adhere to naming conventions largely described in
- * # https://cssguidelin.es.
+ * # https://cssguidelin.es. So, Bootstrap classes look .like-this, and Radian's .like__this.
  *
  * # TABLE OF CONTENTS
  *
  * - BASE
  * - TYPOGRAPHY
  * - LAYOUT
- * - NAVIGATION
  * - PRINT
  */
 
@@ -38,8 +37,6 @@
 /**
  * # NAVIGATION
  */
-@import "nav";
-@import "navbar";
 
 @import "utilities";
 
