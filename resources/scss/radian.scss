@@ -1,34 +1,49 @@
+/**
+ * # We are using Bootstrap 4 (https://getbootstrap.com) as our base styles. With that exception,
+ * # any custom styles we write will adhere to naming conventions largely described in
+ * # https://cssguidelin.es.
+ *
+ * # TABLE OF CONTENTS
+ *
+ * - BASE
+ * - TYPOGRAPHY
+ * - LAYOUT
+ * - NAVIGATION
+ * - PRINT
+ */
+
+/**
+ * # BASE
+ * - Functions and Mixins are Sass utilities that help generate styles
+ * - that might otherwise be difficult to calculate or tedious to write.
+ * - We will set base properties like color, border-radius, font, and the like, in
+ * - Variables. Lastly, Reboot includes normalizing styles to ensure cross-browser
+ * - consistency.
+ */
 @import "functions";
 @import "variables";
 @import "mixins";
-@import "print";
 @import "reboot";
+
+/**
+ * # TYPOGRAPHY
+ */
 @import "type";
-@import "images";
-@import "code";
+
+/**
+ * # LAYOUT
+ */
 @import "grid";
-@import "tables";
-@import "forms";
-@import "buttons";
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "input-group";
-@import "custom-forms";
+
+/**
+ * # NAVIGATION
+ */
 @import "nav";
 @import "navbar";
-@import "card";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "jumbotron";
-@import "alert";
-@import "progress";
-@import "media";
-@import "list-group";
-@import "close";
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
+
 @import "utilities";
+
+/**
+ * # PRINT
+ */
+@import "print";
