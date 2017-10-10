@@ -11,7 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/scss/radian.scss', 'public/');
+mix.sass('resources/scss/radian.scss', 'public/')
+    .js('resources/js/radian.js', 'public/');
 
 // Full API
 // mix.js(src, output);

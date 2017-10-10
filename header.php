@@ -88,7 +88,7 @@
 
         <div class="col-6 d-flex justify-content-end d-md-none">
 
-            <button class="btn btn-primary" aria-controls="primary-menu" aria-expanded="false">
+            <button class="btn btn-primary" aria-controls="primary-menu" aria-expanded="false" id="primary-menu-button">
 
                 <?php esc_html_e( 'Menu', 'radian' ); ?>
 
@@ -98,7 +98,7 @@
 
         <div class="clearfix"></div>
 
-        <nav class="col d-flex flex-column justify-content-end" role="navigation">
+        <nav class="col d-md-flex d-none flex-column justify-content-end radian__menu" role="navigation">
 
             <?php
             /**
