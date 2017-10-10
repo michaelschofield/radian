@@ -8,7 +8,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="header <?php echo (is_home() || is_front_page() ? 'sr-only': '') ?>">
+	<header class="header sr-only">
         <h1>
 		    <?php the_title(); ?>
         </h1>

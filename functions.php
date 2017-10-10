@@ -95,6 +95,15 @@ function radian_content_width() {
 }
 add_action( 'after_setup_theme', 'radian_content_width', 0 );
 
+function radian_get_blog_posts_page_url() {
+    // If front page is set to display a static page, get the URL of the posts page.
+    if ( 'page' === get_option( 'show_on_front' ) ) {
+        return get_permalink( get_option( 'page_for_posts' ) );
+    }
+    // The front page IS the posts page. Get its URL.
+    return get_home_url();
+}
+
 /**
  * Register widget area.
  *
@@ -172,7 +181,7 @@ function createSection($atts, $content = null) {
         'class' => "",
     ), $atts));
     $content = wpautop(trim($content));
-    return '<div id="'. $id . '" class="mb-4 mt-4 pb-4 pt-4 '. $class . '" />' . $content . '</div>';
+    return '<div id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" />' . $content . '</div>';
 }
 add_shortcode('section', 'createSection');
 

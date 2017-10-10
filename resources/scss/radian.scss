@@ -71,28 +71,34 @@
 }
 
 @include media-breakpoint-up(md) {
-  h1, h2, h3, h4, h5, h6, p {
-    @extend .col-md-8;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
+  main {
+    h1, h2, h3, h4, h5, h6, p, ol, ul {
+      @extend .col-md-8;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
+    }
   }
 }
 
 @include media-breakpoint-up(lg) {
-  h1, h2, h3, h4, h5, h6, p {
-    @extend .col-lg-8;
-  }
+  main {
+    h1, h2, h3, h4, h5, h6, p, ol, ul {
+      @extend .col-lg-8;
+    }
 
-  p {
-    font-weight: $font-weight-light;
+    p {
+      font-weight: $font-weight-light;
+    }
   }
 }
 
 
 @include media-breakpoint-up(xl) {
-  h1, h2, h3, h4, h5, h6, p {
-    @extend .col-xl-6;
+  main {
+    h1, h2, h3, h4, h5, h6, p, ol, ul {
+      @extend .col-xl-6;
+    }
   }
 }
 
