@@ -129,6 +129,57 @@ function radian_scripts() {
 add_action( 'wp_enqueue_scripts', 'radian_scripts' );
 
 /**
+ * We need to add our bootstrap class to WordPress-generated menus.
+ */
+function radian_menu_item_class ( $classes, $item, $args, $depth ){
+    $classes[] = 'nav-item';
+    return $classes;
+}
+add_filter ( 'nav_menu_css_class', 'radian_menu_item_class', 10, 4 );
+
+/**
+ * We need to add yet another Bootstrap class to links generated in WP Menus.
+ */
+function radian_menu_add_class( $atts, $item, $args ) {
+    $class = 'nav-link ' . ($item->current ? 'active' : '');
+    $atts['class'] = $class;
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'radian_menu_add_class', 10, 3 );
+
+function createButton($atts, $content = null) {
+    extract(shortcode_atts(array(
+        'id' => "",
+        'class' => "",
+        'href' => "",
+    ), $atts));
+    return '<a id="'. $id . '" class="btn btn-primary '. $class . '" href="' . $href . '" />' . $content . '</a>';
+}
+add_shortcode('button', 'createButton');
+
+function createLead($atts, $content = null) {
+    extract(shortcode_atts(array(
+        'id' => "",
+        'class' => "",
+    ), $atts));
+    return '<p id="'. $id . '" class="lead '. $class . '" />' . $content . '</p>';
+}
+add_shortcode('lead', 'createLead');
+
+function createSection($atts, $content = null) {
+    extract(shortcode_atts(array(
+        'id' => "",
+        'class' => "",
+    ), $atts));
+    $content = wpautop(trim($content));
+    return '<div id="'. $id . '" class="mb-4 mt-4 pb-4 pt-4 '. $class . '" />' . $content . '</div>';
+}
+add_shortcode('section', 'createSection');
+
+remove_filter( 'the_content', 'wpautop' );
+add_filter( 'the_content', 'wpautop' , 12);
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/resources/templates/custom-header.php';

@@ -33,7 +33,7 @@
         <?php esc_html_e( 'Skip to content', 'radian' ); ?>
     </a>
 
-	<header class="align-items-start justify-content-between m-0 row">
+	<header class="align-items-center justify-content-between m-0 p-2 radian__header row">
 
         <!--
         # We are hiding our site's title and its description, but it's important for
@@ -55,7 +55,7 @@
         # Our logo. These are two separate `<svg>` blocks so that we can style them a little more easily.
         # For instance, whether we want to reorganize it based on screen size.
         -->
-        <a class="align-items-center col-6 d-flex radian__logo pl-0" href="<?php echo esc_url( home_url('/') ); ?>">
+        <a class="align-items-center col d-flex radian__logo pl-0" href="<?php echo esc_url( home_url('/') ); ?>">
 
             <span class="sr-only">Home</span>
 
@@ -96,18 +96,23 @@
 
         </div>
 
-        <div class="clearfix"></div>
+        <div class="clearfix d-md-none"></div>
 
-        <nav class="col d-md-flex d-none flex-column justify-content-end radian__menu" role="navigation">
+        <nav class="col col-md-10 d-md-flex d-none flex-column flex-md-row justify-content-end radian__menu" role="navigation">
 
             <?php
             /**
+             * We are wrapping this menu in a `<nav>` in here, so we don't need another
+             * containing element -- like a `<div>` -- so we set `container` to false. The
+             * `depth` parameter defines how many levels of menu we want to display.
+             * In this case, we only want the top-most.
              * @see https://developer.wordpress.org/reference/functions/wp_nav_menu/
              */
             wp_nav_menu( array(
-                'menu_class' => '',
+                'container' => false,
+                'depth' => 1,
+                'menu_class' => 'nav',
                 'menu_id' => 'primary-menu',
-                'theme_location' => 'menu-1',
             ) );
 			?>
 
@@ -115,4 +120,4 @@
 
 	</header>
 
-	<div id="content" class="site-content">
+	<div id="content">
