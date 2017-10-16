@@ -8,8 +8,8 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="header sr-only">
-        <h1>
+	<header class="d-flex header justify-content-center">
+        <h1 class="sr-only">
 		    <?php the_title(); ?>
         </h1>
 	</header>

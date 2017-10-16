@@ -179,9 +179,10 @@ function createSection($atts, $content = null) {
     extract(shortcode_atts(array(
         'id' => "",
         'class' => "",
+        'title' => "",
     ), $atts));
     $content = wpautop(trim($content));
-    return '<div id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" />' . $content . '</div>';
+    return '<section id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" title="' . $title .'"/>' . $content . '</div>';
 }
 add_shortcode('section', 'createSection');
 
