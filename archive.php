@@ -9,43 +9,100 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+    <main id="main" class="pb-0 pt-2 pt-lg-4">
 
-		<?php
-		if ( have_posts() ) : ?>
+        <header class="header">
+            <h1 class="h1">Discover</h1>
+            <?php
+                the_archive_title( '<h2 class="h3">', '</h1>' );
+                the_archive_description( '<p class="archive-description">', '</p>' );
+            ?>
+        </header><!-- .page-header -->
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+        <form action="/" class="d-flex justify-content-center form mb-4 mt-3" method="get" role="form">
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+            <div class="col-md-8 col-lg-6 d-flex form-group p-md-0">
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+                <label for="s" class="sr-only">Search resources</label>
 
-			endwhile;
+                <input class="col form-control form-control-lg mr-3" id="s" name="s" placeholder="Search for another kind of resource" type="search">
 
-			the_posts_navigation();
+                <button class="btn btn-primary" type="submit">Find</button>
 
-		else :
+            </div>
 
-			get_template_part( 'template-parts/content', 'none' );
+        </form>
 
-		endif; ?>
+        <div class="d-flex justify-content-center">
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+            <div class="col-md-8 col-lg-6 p-md-0">
+
+                <?php
+                $args = array(
+                    'smallest'                  => 1,
+                    'largest'                   => 1,
+                    'unit'                      => 'rem',
+                    'number'                    => 10,
+                    'format'                    => 'flat',
+                    'orderby'                   => 'count',
+                    'order'                     => 'ASC',
+                    'link'                      => 'view',
+                    'separator'                 => "\n",
+                    'taxonomy'                  => array('post_tag', 'category'),
+                    'echo'                      => true,
+                );
+                wp_tag_cloud($args);
+                ?>
+            </div>
+
+        </div>
+
+        <section class="bg-primary mt-3 pb-5 pt-3 text-white">
+
+
+            <?php
+            if ( have_posts() ) : ?>
+
+            <?php while ( have_posts() ) : the_post(); ?>
+
+                <?php the_title( '<h3 class="h3 mt-5 text-white"><a class="text-white" href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+                <p>
+                    <?php echo get_the_excerpt(); ?>
+                </p>
+
+                <div class="d-flex justify-content-center">
+
+                    <div class="col-md-8 col-lg-6 p-md-0">
+                        <?php
+                        $categories = get_the_terms( $post->ID, 'category' );
+                        if ($categories && ! is_wp_error($categories)): ?>
+                            <?php foreach($categories as $category): ?>
+                                <a href="<?php echo get_term_link( $category->slug, 'category'); ?>" rel="tag" class="btn btn-primary btn-sm mr-2 text-lowercase <?php echo $category->slug; ?>" style="border-color: white;"># <?php echo $category->name; ?></a>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php
+                        $tags = get_the_terms( $post->ID, 'post_tag' );
+                        if ($tags && ! is_wp_error($tags)): ?>
+                            <?php foreach($tags as $tag): ?>
+                                <a href="<?php echo get_term_link( $tag->slug, 'post_tag'); ?>" rel="tag" class="btn btn-outline-primary btn-sm mr-2 text-lowercase <?php echo $tag->slug; ?>"># <?php echo $tag->name; ?></a>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+
+
+            <?php endwhile; else : ?>
+
+                <h3 class="h3 mt-5 text-white">Unfortunately, we couldn't find any resources with that tag.</h3>
+
+            <?php endif; ?>
+
+
+        </section>
+
+    </main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

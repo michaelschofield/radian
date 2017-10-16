@@ -27,7 +27,7 @@ if ( ! function_exists( 'radian_posted_on' ) ) :
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
 			esc_html_x( '%s', 'post date', 'radian' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+			'<span>' . $time_string . '</span>'
 		);
 
 		$byline = sprintf(
