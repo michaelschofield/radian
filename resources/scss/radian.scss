@@ -38,6 +38,7 @@
  * # COMPONENTS
  */
 @import 'buttons';
+@import '_forms';
 @import 'nav';
 
 @import "utilities";
@@ -51,6 +52,23 @@
   }
   &__header {
     border-bottom: 1px solid $border-color;
+  }
+
+  /**
+   * Normally, you want to avoid using Sass's `@extend` method, because
+   * you can quickly generate poor CSS and tumble off the wagon of
+   * best practices. WordPress has some pretty complicated-to-access
+   * functions, though - needlessly (!) - so you have to weigh the inconvenience
+   * of either using `@extend` or hook into the particular WP filter and
+   * change the classes that are automatically generated. In this case, lesser
+   * of evils.
+   */
+  .tag-cloud-link {
+    @extend .btn, .btn-outline-primary, .mb-3, .mr-2, .text-lowercase;
+
+    &:before {
+      content: '# '
+    }
   }
 
   .text-white {

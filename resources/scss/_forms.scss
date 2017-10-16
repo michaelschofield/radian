@@ -167,6 +167,7 @@ select.form-control-sm {
 .form-control-lg {
   padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
   font-size: $font-size-lg;
+  font-weight: 300;
   line-height: $input-btn-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }

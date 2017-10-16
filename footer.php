@@ -13,8 +13,8 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
+	<footer id="colophon" class="bg-dark d-flex justify-content-center pb-5 pt-5 text-white">
+		<div class="col-md-8 col-lg-6 p-md-0">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'radian' ) ); ?>"><?php
 				/* translators: %s: CMS name, i.e. WordPress. */
 				printf( esc_html__( 'Proudly powered by %s', 'radian' ), 'WordPress' );

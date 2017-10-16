@@ -13,7 +13,7 @@
 
 get_header(); ?>
 
-    <main id="main" class="site-main">
+    <main id="main" class="pb-2 pb-lg-4 pt-2 pt-lg-4">
 
     <?php
     if ( have_posts() ) :
