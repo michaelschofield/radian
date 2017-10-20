@@ -182,9 +182,20 @@ function createSection($atts, $content = null) {
         'title' => "",
     ), $atts));
     $content = wpautop(trim($content));
-    return '<section id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" title="' . $title .'"/>' . $content . '</div>';
+    return '<section id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" title="' . $title .'"/>' . $content . '</section>';
 }
 add_shortcode('section', 'createSection');
+
+function embedSearch($atts) {
+    extract(shortcode_atts(array(), $atts));
+    $content = '<form action="/" class="d-flex justify-content-center form mb-4 mt-3" method="get" role="form"><div class="col-md-8 col-lg-6 d-flex form-group p-md-0">
+            <label for="s" class="sr-only">Search resources</label>
+            <input class="col form-control form-control-lg mr-3" id="s" name="s" placeholder="What kind of resource are you looking for?" type="search">
+            <button class="btn btn-primary" type="submit">Find</button></div></form>';
+    $content = wpautop(trim($content));
+    return $content;
+}
+add_shortcode('search', 'embedSearch');
 
 remove_filter( 'the_content', 'wpautop' );
 add_filter( 'the_content', 'wpautop' , 12);

@@ -46,7 +46,7 @@
 
     <footer class="d-flex justify-content-center">
 
-        <div class="col-md-8 col-lg-6 p-0">
+       cd wp-content/themes/ <div class="col-md-8 col-lg-6 p-0">
 
             <div class="m-0 mb-3 mt-3 row">
 

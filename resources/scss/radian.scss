@@ -54,6 +54,14 @@
     border-bottom: 1px solid $border-color;
   }
 
+  &__input {
+
+    &--transparent {
+      background-color: rgba(255, 255, 255, 0.10);
+    }
+
+  }
+
   /**
    * Normally, you want to avoid using Sass's `@extend` method, because
    * you can quickly generate poor CSS and tumble off the wagon of
