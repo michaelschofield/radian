@@ -19,10 +19,8 @@ get_header(); ?>
             <h1 class="h1">
                 Discover
             </h1>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, et explicabo facere fugiat, iste itaque magnam molestiae mollitia nemo, neque nisi non odio perferendis praesentium quia sint totam vel voluptatum.</p>
         </header>
-
+   <br/>
         <form action="/" class="d-flex justify-content-center form mb-4 mt-3" method="get" role="form">
 
             <div class="col-md-8 col-lg-6 d-flex form-group p-md-0">
