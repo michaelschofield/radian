@@ -182,7 +182,7 @@ function createSection($atts, $content = null) {
         'title' => "",
     ), $atts));
     $content = wpautop(trim($content));
-    return '<section id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" title="' . $title .'"/>' . $content . '</section>';
+    return '<section id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" title="' . $title .'"/>' . do_shortcode($content) . '</section>';
 }
 add_shortcode('section', 'createSection');
 
@@ -197,8 +197,35 @@ function embedSearch($atts) {
 }
 add_shortcode('search', 'embedSearch');
 
+function embedTeam($atts, $content = null)
+{
+    extract(shortcode_atts(array(), $atts));
+    return '<div class="radian__team row">' . do_shortcode($content) . '</div>';
+}
+add_shortcode('team', 'embedTeam');
+
+function embedTeamMember($atts) {
+    extract(shortcode_atts(array(
+        'email' => '',
+        'name' => '',
+        'title' => '',
+        'size' => '512',
+    ), $atts));
+    $content = '<div class="col-6 col-md-4 p-0 text-center"><div class="radian__team__member__image p-4">' . get_avatar($email, $size) . '</div><h3 class="col-12 h6 m-0 p-0 radian__team__member__name">' . $name . '</h3><p class="col-12 m-0 p-0 radian__team__member__title small">' . $title . '</p></div>';
+    return $content;
+}
+add_shortcode('team-member', 'embedTeamMember');
+
 remove_filter( 'the_content', 'wpautop' );
 add_filter( 'the_content', 'wpautop' , 12);
+
+function radian_remove_dimensions_from_avatars($avatar)
+{
+    $avatar = preg_replace("/(width|height)=\'\d*\'\s/", "", $avatar);
+    return $avatar;
+}
+add_filter('get_avatar', 'radian_remove_Dimensions_from_avatars', 10);
+
 
 /**
  * Implement the Custom Header feature.
