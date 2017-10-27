@@ -98,7 +98,7 @@
 
         <div class="clearfix d-md-none"></div>
 
-        <nav class="col col-md-10 d-md-flex d-none flex-column flex-md-row justify-content-end radian__menu" role="navigation">
+        <nav class="col-md col-md-10 d-md-flex d-none flex-column flex-md-row justify-content-end radian__menu" role="navigation">
 
             <?php
             /**
@@ -111,7 +111,7 @@
             wp_nav_menu( array(
                 'container' => false,
                 'depth' => 1,
-                'menu_class' => 'nav',
+                'menu_class' => 'nav flex-column flex-md-row',
                 'menu_id' => 'primary-menu',
             ) );
 			?>
