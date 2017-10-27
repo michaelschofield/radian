@@ -182,7 +182,7 @@ function createSection($atts, $content = null) {
         'title' => "",
     ), $atts));
     $content = wpautop(trim($content));
-    return '<section id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" title="' . $title .'"/>' . $content . '</section>';
+    return '<section id="'. $id . '" class="mb-5 mt-5 pb-5 pt-5 '. $class . '" title="' . $title .'"/>' . do_shortcode($content) . '</section>';
 }
 add_shortcode('section', 'createSection');
 
@@ -197,8 +197,27 @@ function embedSearch($atts) {
 }
 add_shortcode('search', 'embedSearch');
 
+function embedTeamMember($atts) {
+    extract(shortcode_atts(array(
+        'email' => '',
+        'size' => '512',
+        'url' => null,
+    ), $atts));
+    $content = '<div class="d-flex"><div class="col-md-4">' . get_avatar($email, $size) . '</div></div>';
+    return $content;
+}
+add_shortcode('team-member', 'embedTeamMember');
+
 remove_filter( 'the_content', 'wpautop' );
 add_filter( 'the_content', 'wpautop' , 12);
+
+function radian_remove_dimensions_from_avatars($avatar)
+{
+    $avatar = preg_replace("/(width|height)=\'\d*\'\s/", "", $avatar);
+    return $avatar;
+}
+add_filter('get_avatar', 'radian_remove_Dimensions_from_avatars', 10);
+
 
 /**
  * Implement the Custom Header feature.
