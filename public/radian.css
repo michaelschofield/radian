@@ -620,6 +620,7 @@ main h6,
 main p,
 main ol,
 main ul,
+main .radian__team,
 .col-md-9,
 .col-md-10,
 .col-md-11,
@@ -1085,7 +1086,8 @@ main ul,
   main h6,
   main p,
   main ol,
-  main ul {
+  main ul,
+  main .radian__team {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 66.66666667%;
             flex: 0 0 66.66666667%;
@@ -1269,7 +1271,8 @@ main ul,
   main h6,
   main p,
   main ol,
-  main ul {
+  main ul,
+  main .radian__team {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 66.66666667%;
             flex: 0 0 66.66666667%;
@@ -1439,7 +1442,8 @@ main ul,
   main h6,
   main p,
   main ol,
-  main ul {
+  main ul,
+  main .radian__team {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 50%;
             flex: 0 0 50%;
@@ -2226,7 +2230,8 @@ input[type="button"].btn-block {
   width: 100%;
 }
 
-.img-fluid {
+.img-fluid,
+.radian__team .avatar {
   max-width: 100%;
   height: auto;
 }
@@ -2989,7 +2994,8 @@ a.bg-dark:hover {
   border-bottom-left-radius: 0.25rem !important;
 }
 
-.rounded-circle {
+.rounded-circle,
+.radian__team .avatar {
   border-radius: 50%;
 }
 
@@ -6072,6 +6078,12 @@ a.text-dark:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.radian__team .avatar {
+  border-color: #ED6449;
+  border-style: solid;
+  border-width: 3px;
+}
+
 .radian .tag-cloud-link:before {
   content: '# ';
 }
@@ -6104,7 +6116,8 @@ a.text-dark:hover {
   main h6,
   main p,
   main ol,
-  main ul {
+  main ul,
+  main .radian__team {
     margin-left: auto;
     margin-right: auto;
     padding: 0;
